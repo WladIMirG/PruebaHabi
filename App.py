@@ -57,8 +57,9 @@ def application(environ : Any, start_response : Any) -> json:
     params = parse_qs(environ['QUERY_STRING'])
     start_response(status, headers)
     
-    db = DB_query() #se inicia la base donde se haran las consultas
-    db.run_con("localhost", "root", "unicornio003", "habi")
+    db = DB_query() #se inicia la base donde se haran las consulta
+    db.run_con("localhost", "root", "unicornio003", "habi") #Por favor modifique las credenciales segun lo requiera
+    
     response = db.query( dt.Query(params) )
 
     if response is None:

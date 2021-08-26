@@ -4,14 +4,29 @@
 
         pip install --upgrade pip
 
+- Considere la creacion de un entorno virtual.
 
-*** Instalación de las dependencias:
+- Instale dependencias:
+
 Ubícate con la terminal en le directorio y ejecuta el siguiente comando:
 
         pip install -r requirements.txt
 
 Se instalarán todos los requerimientos necesarios para este proyecto.
 
+
+
+**Ejecucion de la API**
+
+- Importe la base de datos (Recomiendo HeidiSQL) y lancela.
+
+- En la funcion "application" en el "App.py" modifique las credenciales de conexion a la base de datos en "db.run_con()" linea 61.
+
+- La Api se ejecuta por terminal, hubicandose en la carpeta contenedora y con el siguiente comando:
+
+                python App.py
+
+- O ejecute App.py en la interfaz de su editor.
 
 ***PROBLEMA 1***
 
@@ -35,6 +50,7 @@ Para abordar el desarrollo de la API dividí el problema de la siguiente manera:
 -	Gestor de Query’s a la base de datos.
 
 
+
 **Base de datos**
 
 Diseñe la base de datos de forma sencilla en un proyecto llamado “db_habi.sql” el cual contiene las bases de datos para departamentos, municipios, estados e inmuebles. Como lo muestra la parte verde del "DiagramaEntidad-Relacion.png" de la carpeta "imag".
@@ -53,8 +69,6 @@ Para recibir las peticiones del cliente se usa el estándar WSGI de Python a tra
 **API**
 
 Se crea la aplicación que recibe un diccionario “environ” y la función “start_response”, la última recibirá los headers y los estados HTTP para la respuesta. Desde la API se descompone el argumento de la URL y se descompone en un diccionario de tipo “dt.Query” que contiene los parámetros de la petición. También desde esta Aplicación se llamará a la clase “DB_query”, la que se encargará de construir, mediante lenguaje SQL, la petición, a partir de los parámetros de la solicitud. Una vez recibida la respuesta se organizan los datos en un diccionario del tipo “TypedDict”, para que sea más fácil su serialización, se ajusta el filtrado y esta clase devolverá una lista llena de diccionarios, cada uno equivalente a los datos de un inmueble en específico.
-
-
 
 **URL raiz**
 
